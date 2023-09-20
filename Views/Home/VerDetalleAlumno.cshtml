@@ -1,0 +1,14 @@
+@model Practica.Models.Alumno
+
+@{
+    ViewData["Title"] = "Detalle del Alumno";
+}
+
+<div class="veralumno">
+    <h1>Detalles del Alumno</h1>
+    <p><strong>Nombre:</strong> @ViewBag.Alumno.nombre</p>
+    <p><strong>Apellido:</strong> @ViewBag.Alumno.apellido</p>
+    <p><strong>Curso:</strong> @ViewBag.Alumno.curso</p>
+</div>
+
+<a class="btn btn-info" href='@Url.Action("Index", "Home")'>Volver a la lista de alumnos</a>

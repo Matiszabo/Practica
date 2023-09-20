@@ -1,0 +1,15 @@
+﻿@using Practica.Models
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<p>Elige el nombre de alumno que queres ver<p>
+
+@foreach (Alumno item in ViewBag.ListaAlumnos)
+{
+    <div class="Ver nombre">
+        <p>@item.nombre</p>
+    </div>
+ <a class="btn btn-info" href='@Url.Action("VerDetalleAlumno","Home", new {id = item.id})'>Ver info Alumno</a>
+
+}
