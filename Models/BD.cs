@@ -30,5 +30,25 @@ namespace Practica.Models
             }
             return Elegido;
         }
+        public static List<Alumno> SeleccionarAlumnosReprobados()
+        {
+            List<Alumno> ListaAlumnos;
+            using(SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT * FROM Alumno WHERE promedio < 6";
+                ListaAlumnos = db.Query<Alumno>(sql).ToList();
+            }
+            return ListaAlumnos;
+        }
+        public static List<Alumno> SeleccionarAlumnosAprobados()
+        {
+            List<Alumno> ListaAlumnos;
+            using(SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT * FROM Alumno WHERE promedio >= 6";
+                ListaAlumnos = db.Query<Alumno>(sql).ToList();
+            }
+            return ListaAlumnos;
+        }
     }
 }

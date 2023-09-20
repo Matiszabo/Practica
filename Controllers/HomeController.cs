@@ -17,9 +17,10 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         ViewBag.ListaAlumnos = BD.SeleccionarAlumnos();
+        ViewBag.AlumnosReprobados = BD.SeleccionarAlumnosAprobados();
+        ViewBag.AlumnosAprobados = BD.SeleccionarAlumnosReprobados();
         return View();
     }
-
     public IActionResult Privacy()
     {
         return View();
@@ -27,14 +28,12 @@ public class HomeController : Controller
     public IActionResult VerDetalleAlumno(int id)
     {
         Alumno alumno = BD.AlumnoElegido(id);
-
-        if (alumno == null)
-        {
-            return NotFound(); // Devuelve una respuesta 404 si el alumno no se encuentra
-        }
         ViewBag.Alumno = alumno;
+        ViewBag.Promedio = alumno.promedio;
         return View();
     }
+
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

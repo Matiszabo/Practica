@@ -3,13 +3,44 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<p>Elige el nombre de alumno que queres ver<p>
 
-@foreach (Alumno item in ViewBag.ListaAlumnos)
-{
-    <div class="Ver nombre">
-        <p>@item.nombre</p>
-    </div>
- <a class="btn btn-info" href='@Url.Action("VerDetalleAlumno","Home", new {id = item.id})'>Ver info Alumno</a>
+<h2>Alumnos con Nota Menor a 6</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Curso</th>
+        </tr>
+    </thead>
+        @foreach (Alumno item in ViewBag.AlumnosReprobados)
+        {
+            <tr>
+                <td>@item.nombre</td>
+                <td>@item.apellido</td>
+                <td>@item.curso</td>
+                <td> <a class="btn btn-info" href='@Url.Action("VerDetalleAlumno","Home", new {id = item.id})'>Ver info Alumno</a></td>
+            </tr>
+        }
+</table>
 
-}
+<h2>Alumnos con Nota Mayor o Igual a 6</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Curso</th>
+        </tr>
+    </thead>
+        @foreach (Alumno item in ViewBag.AlumnosAprobados)
+        {
+            <tr>
+                <td>@item.nombre</td>
+                <td>@item.apellido</td>
+                <td>@item.curso</td>
+                <td><a class="btn btn-info" href='@Url.Action("VerDetalleAlumno","Home", new {id = item.id})'>Ver info Alumno</a></td>
+            </tr>
+        }
+</table>
+
